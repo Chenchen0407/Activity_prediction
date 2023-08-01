@@ -20,3 +20,44 @@ The ADM uses the activity type determined by the ATM and other context features 
 ### Sequential Activity Prediction
 The model generates sequential activities, starting with the first activities and personal attributes in the dataset, and continues to generate activities until the activity type is predicted as 'none'. 
 
+## TimeGeo Recreation (CHTS)
+
+This project focuses on recreating the TimeGeo model using the California Household Travel Survey (CHTS) dataset. The model is divided into two parts: Temporal Choices and Spatial Choices.
+
+### Temporal Choices
+
+Temporal choices are modeled using a time-inhomogeneous Markov model with a 5-minute resolution. The model classifies individuals into non-commuters and commuters, and further classifies commuters into those taking work trips and those taking non-work trips.
+
+The code for this part can be found in the `temporal_choice` directory.
+
+#### Parameter Estimation
+
+Three parameters are estimated: 
+
+1. Number of home-based tours (Nw) 
+2. Dwell rate (Beta1) 
+3. Burst rate (Beta2)
+
+The parameters are estimated by minimizing the prediction error of activity duration and the number of trips per day.
+
+#### Results
+
+The temporal choice model captures the trip number patterns effectively. It can reasonably explain the drop in the number of trips when the number of trips is 3. However, it struggles to predict long-duration trips.
+
+### Spatial Choices
+
+Spatial choices are modeled using the rank-based exploration (r-EPR) model. The model randomly selects points in census tracts based on frequency.
+
+The code for this part can be found in the `spatial_choice` directory.
+
+#### Return Probability
+
+In the model, the return probability is close to zero, given the duration of only a single day.
+
+#### Rank-based Exploration
+
+The model follows a rank-based exploration pattern where the probability of a location being visited is inversely proportional to its rank.
+
+### Installation
+
+1. Clone the repository:
