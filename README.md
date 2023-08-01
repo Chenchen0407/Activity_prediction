@@ -57,7 +57,3 @@ In the model, the return probability is close to zero, given the duration of onl
 #### Rank-based Exploration
 
 The model follows a rank-based exploration pattern where the probability of a location being visited is inversely proportional to its rank.
-
-### Installation
-
-1. Clone the repository:
